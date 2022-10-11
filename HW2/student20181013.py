@@ -31,7 +31,7 @@ for row in ws:
 #rankings
 rankings = [None]*len(scores)
 for i in range(len(scores)):
-	rankings[i] = len(scores) + 1
+	rankings[i] = len(scores)
 	
 	for j in range(len(scores)):
 		if scores[j] < scores[i]:
