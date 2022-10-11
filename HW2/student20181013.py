@@ -40,10 +40,10 @@ for i in range(len(scores)):
 #for i in range(len(rankings)):
 #print(rankings)
 
-row_id = 2;
-for i in range(len(scores)):
-	ws.cell(row=row_id, column=9).value = rankings[i-1]
-	row_id += 1
+#row_id = 2;
+#for i in range(len(scores)):
+#	ws.cell(row=row_id, column=9).value = rankings[i-1]
+#	row_id += 1
 	
 #scores_rate설
 scores_rate = [x/len(scores) for x in rankings]
