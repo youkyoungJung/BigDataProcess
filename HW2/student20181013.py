@@ -57,19 +57,19 @@ for i in range(len(scores)):
 		ws.cell(row=row_id, column=8).value = 'A+'
 		row_id += 1
 	elif len(scores)*0.3 >= rankings[i]:
-		ws.cell(row=row_id, column=8).value = 'A'
+		ws.cell(row=row_id, column=8).value = 'A0'
 		row_id += 1
 	elif len(scores)*0.7*0.5 >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'B+'
 		row_id += 1
 	elif len(scores)*0.7 >= rankings[i]:
-		ws.cell(row=row_id, column=8).value = 'B'
+		ws.cell(row=row_id, column=8).value = 'B0'
 		row_id += 1
 	elif len(scores)*1*0.5 >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'C+'
 		row_id += 1
 	else:
-		ws.cell(row=row_id, column=8).value = 'C'
+		ws.cell(row=row_id, column=8).value = 'C0'
 		row_id += 1
 
 
