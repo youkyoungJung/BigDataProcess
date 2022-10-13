@@ -49,30 +49,21 @@ print(rankings)
 #grade부여
 
 row_id = 2
-count = 0
 
 for i in range(len(scores)):
 	print(i, len(scores))
 
-	if len(scores)*0.3*0.5/len(scores) >= rankings[i]/len(scores):
+	if len(scores)*0.3*0.5 >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'A+'
-		count += 1
-		print("count: ",count)
 		row_id += 1
-	elif len(scores)*0.3/len(scores) >= rankings[i]/len(scores):
+	elif len(scores)*0.3 >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'A0'
-		count += 1
-		print("count: ",count)
 		row_id += 1
-	elif len(scores)*0.7*0.5/len(scores) >= rankings[i]/len(scores):
+	elif len(scores)*0.7*0.5 >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'B+'
-		count += 1
-		print("count: ",count)
 		row_id += 1
-	elif len(scores)*0.7/len(scores) >= rankings[i]/len(scores):
+	elif len(scores)*0.7 >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'B0'
-		count += 1
-		print("count: ",count)
 		row_id += 1
 	elif ((len(scores) - (len(scores)*0.7))*0.5) <= len(scores)-rankings[i]:
 		if(len(scores)-rankings[i]) != 0:
@@ -82,7 +73,6 @@ for i in range(len(scores)):
 	
 	else:
 		ws.cell(row=row_id, column=8).value = 'C0'
-		print("count: ",count)
 		row_id += 1
 
 
