@@ -49,19 +49,19 @@ for i in range(len(scores)):
 #grade부여
 row_id = 2
 for i in range(len(scores)):
-	if len(scores)*0.3*0.5/len(scores) >= rankings[i]/len(scores):
+	if len(scores)*0.3*0.5/len(scores) > rankings[i]/len(scores):
 		ws.cell(row=row_id, column=8).value = 'A+'
 		row_id += 1
-	elif len(scores)*0.3/len(scores) >= rankings[i]/len(scores):
+	elif len(scores)*0.3/len(scores) > rankings[i]/len(scores):
 		ws.cell(row=row_id, column=8).value = 'A0'
 		row_id += 1
-	elif len(scores)*0.7*0.5/len(scores) >= rankings[i]/len(scores):
+	elif len(scores)*0.7*0.5/len(scores) > rankings[i]/len(scores):
 		ws.cell(row=row_id, column=8).value = 'B+'
 		row_id += 1
-	elif len(scores)*0.7/len(scores) >= rankings[i]/len(scores):
+	elif len(scores)*0.7/len(scores) > rankings[i]/len(scores):
 		ws.cell(row=row_id, column=8).value = 'B0'
 		row_id += 1
-	elif len(scores)*1*0.5/len(scores) >= rankings[i]/len(scores):
+	elif len(scores)*1*0.5/len(scores) > rankings[i]/len(scores):
 		ws.cell(row=row_id, column=8).value = 'C+'
 		row_id += 1
 	else:
