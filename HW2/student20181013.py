@@ -40,39 +40,38 @@ for i in range(len(scores)):
 #for i in range(len(rankings)):
 print(rankings)
 
-#row_id = 2;
-#for i in range(len(scores)):
-#	ws.cell(row=row_id, column=9).value = rankings[i]
-#	row_id += 1
+row_id = 2;
+for i in range(len(scores)):
+	ws.cell(row=row_id, column=9).value = rankings[i]
+	row_id += 1
 	
 #grade부여
+print("A+등수: ",len(scores)*0.3*0.5)
+print("A0등수: ",len(scores)*0.3)
+print("B+등수: ",len(scores)*0.7*0.5)
+print("B0등수: ",len(scores)*0.7)
+print("C+등수: ",len(scores)*0.7+(len(scores) - (len(scores)*0.7))*0.5)
+
 row_id = 2
 
 for i in range(len(scores)):
-
-	if len(scores)*0.3*0.5 >= rankings[i]:
-		print("a+")
+	if int(len(scores)*0.3*0.5) > rankings[i]:	
 		ws.cell(row=row_id, column=8).value = 'A+'
 		row_id += 1
-	elif len(scores)*0.3 >= rankings[i]:
-		print("a0")
+	elif int(len(scores)*0.3) > rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'A0'
 		row_id += 1
-	elif len(scores)*0.7*0.5 >= rankings[i]:
-		print("b+")
+	elif int(len(scores)*0.7*0.5) > rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'B+'
 		row_id += 1
-	elif len(scores)*0.7 >= rankings[i]:
-		print("b0")
+	elif int(len(scores)*0.7) > rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'B0'
 		row_id += 1
-	elif (len(scores)*0.7+(len(scores) - (len(scores)*0.7))*0.5) >= rankings[i]:
-		print("c+")
+	elif int(len(scores)*0.7+(len(scores)-len(scores)*0.7)*0.5) > rankings[i]
 		ws.cell(row=row_id, column=8).value = 'C+'
 		row_id += 1
-	
+		#print('c+')
 	else:
-		print("c0")
 		ws.cell(row=row_id, column=8).value = 'C0'
 		row_id += 1
 
