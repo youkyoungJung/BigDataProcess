@@ -1,7 +1,7 @@
  #!/usr/bin/python3
 import openpyxl
 
-wb = openpyxl.load_workbook("student2.xlsx")
+wb = openpyxl.load_workbook("student.xlsx")
 ws = wb['Sheet1']
 
 #total
@@ -46,28 +46,27 @@ print(rankings)
 #	row_id += 1
 	
 #grade부여
-
 row_id = 2
 
 for i in range(len(scores)):
 
-	if int(len(scores)*0.3*0.5) >= rankings[i]:
+	if len(scores)*0.3*0.5 >= rankings[i]:
 		print("a+")
 		ws.cell(row=row_id, column=8).value = 'A+'
 		row_id += 1
-	elif int(len(scores)*0.3) >= rankings[i]:
+	elif len(scores)*0.3 >= rankings[i]:
 		print("a0")
 		ws.cell(row=row_id, column=8).value = 'A0'
 		row_id += 1
-	elif int(len(scores)*0.7*0.5) >= rankings[i]:
+	elif len(scores)*0.7*0.5 >= rankings[i]:
 		print("b+")
 		ws.cell(row=row_id, column=8).value = 'B+'
 		row_id += 1
-	elif int(len(scores)*0.7) >= rankings[i]:
+	elif len(scores)*0.7 >= rankings[i]:
 		print("b0")
 		ws.cell(row=row_id, column=8).value = 'B0'
 		row_id += 1
-	elif int(len(scores)*0.7+(len(scores) - (len(scores)*0.7))*0.5) >= rankings[i]:
+	elif (len(scores)*0.7+(len(scores) - (len(scores)*0.7))*0.5) >= rankings[i]:
 		print("c+")
 		ws.cell(row=row_id, column=8).value = 'C+'
 		row_id += 1
@@ -76,6 +75,7 @@ for i in range(len(scores)):
 		print("c0")
 		ws.cell(row=row_id, column=8).value = 'C0'
 		row_id += 1
+
 
 
 wb.save("student.xlsx")
