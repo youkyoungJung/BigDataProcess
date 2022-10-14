@@ -55,19 +55,19 @@ print("C+등수: ",len(scores)*0.7+(len(scores) - (len(scores)*0.7))*0.5)
 row_id = 2
 
 for i in range(len(scores)):
-	if int(len(scores)*0.3*0.5) > rankings[i]:	
+	if int(len(scores)*0.3*0.5) >= rankings[i]:	
 		ws.cell(row=row_id, column=8).value = 'A+'
 		row_id += 1
-	elif int(len(scores)*0.3) > rankings[i]:
+	elif int(len(scores)*0.3) >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'A0'
 		row_id += 1
-	elif int(len(scores)*0.7*0.5) > rankings[i]:
+	elif int(len(scores)*0.7*0.5) >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'B+'
 		row_id += 1
-	elif int(len(scores)*0.7) > rankings[i]:
+	elif int(len(scores)*0.7) >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'B0'
 		row_id += 1
-	elif int(len(scores)*0.7+(len(scores)-len(scores)*0.7)*0.5) > rankings[i]
+	elif int(len(scores)*0.7+(len(scores)-len(scores)*0.7)*0.5) >= rankings[i]
 		ws.cell(row=row_id, column=8).value = 'C+'
 		row_id += 1
 		#print('c+')
