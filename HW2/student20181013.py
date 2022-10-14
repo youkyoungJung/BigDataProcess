@@ -67,7 +67,7 @@ for i in range(len(scores)):
 	elif int(len(scores)*0.7) >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'B0'
 		row_id += 1
-	elif int(len(scores)*0.7+(len(scores)-len(scores)*0.7)*0.5) >= rankings[i]
+	elif int(len(scores)*0.7+(len(scores)-len(scores)*0.7)*0.5) >= rankings[i]:
 		ws.cell(row=row_id, column=8).value = 'C+'
 		row_id += 1
 		#print('c+')
