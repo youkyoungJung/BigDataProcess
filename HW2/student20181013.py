@@ -30,13 +30,12 @@ for row in ws:
 #rankings
 rankings = [None]*len(scores)
 for i in range(len(scores)):
-	rankings[i] = len(scores)
+	rankings[i] = len(scores) #초깃값 설정
 	
 	for j in range(len(scores)):
 		if scores[j] < scores[i]:
 			rankings[i] -= 1			
-
-			
+		
 #for i in range(len(rankings)):
 print(rankings)
 
@@ -46,34 +45,34 @@ print(rankings)
 #	row_id += 1
 	
 #grade부여
-print("A+등수: ",len(scores)*0.3*0.5)
-print("A0등수: ",len(scores)*0.3)
-print("B+등수: ",len(scores)*0.7*0.5)
-print("B0등수: ",len(scores)*0.7)
-print("C+등수: ",len(scores)*0.7+(len(scores) - (len(scores)*0.7))*0.5)
+print("0" + " A+등수범위 ",len(scores)*0.3*0.5)
+print(len(scores)*0.3*0.5, " A0등수범위 ",len(scores)*0.3)
+print(len(scores)*0.3, "B+등수범위 ",len(scores)*0.7*0.5)
+print(len(scores)*0.7*0.5, " B0등수범위 ",len(scores)*0.7)
+print(len(scores)*0.7, " C+등수범위 ",len(scores)*0.7+(len(scores) - (len(scores)*0.7))*0.5)
+
 
 row_id = 2
-
 for i in range(len(scores)):
-	if  0 < rankings[i] <= len(scores)*0.3*0.5:	
+	if  rankings[i] <= len(scores)*0.3*0.5:	
 		ws.cell(row=row_id, column=8).value = 'A+'
-		row_id += 1
-	elif len(scores)*0.3*0.5 < rankings[i] <= len(scores)*0.3:
+		
+	elif rankings[i] <= len(scores)*0.3:
 		ws.cell(row=row_id, column=8).value = 'A0'
-		row_id += 1
-	elif len(scores)*0.3 < rankings[i] <= len(scores)*0.7*0.5:
+		
+	elif rankings[i] <= len(scores)*0.7*0.5:
 		ws.cell(row=row_id, column=8).value = 'B+'
-		row_id += 1
-	elif len(scores)*0.7*0.5 < rankings[i] <= len(scores)*0.7:
+		
+	elif rankings[i] <= len(scores)*0.7:
 		ws.cell(row=row_id, column=8).value = 'B0'
-		row_id += 1
-	elif len(scores)*0.7 < rankings[i] <= (len(scores)*0.7+(len(scores)-len(scores)*0.7)*0.5):
+		
+	elif rankings[i] <= (len(scores)*0.7+(len(scores)-len(scores)*0.7)*0.5):
 		ws.cell(row=row_id, column=8).value = 'C+'
-		row_id += 1
+		
 		#print('c+')
 	else:
 		ws.cell(row=row_id, column=8).value = 'C0'
-		row_id += 1
+	row_id += 1
 
 
 
