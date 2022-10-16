@@ -6,6 +6,7 @@ ws = wb['Sheet1']
 
 #total
 row_id = 1
+sum_v = 0.0
 
 for row in ws:
 	if row_id != 1:
@@ -39,42 +40,39 @@ for i in range(len(scores)):
 #for i in range(len(rankings)):
 print(rankings)
 
-#row_id = 2;
-#for i in range(len(scores)):
-#	ws.cell(row=row_id, column=9).value = rankings[i]
-#	row_id += 1
+row_id = 2;
+for i in range(len(scores)):
+	ws.cell(row=row_id, column=9).value = rankings[i]
+	row_id += 1
 	
 #grade부여
 print("0" + " A+등수범위 ",len(scores)*0.3*0.5)
 print(len(scores)*0.3*0.5, " A0등수범위 ",len(scores)*0.3)
 print(len(scores)*0.3, "B+등수범위 ",len(scores)*0.7*0.5)
 print(len(scores)*0.7*0.5, " B0등수범위 ",len(scores)*0.7)
-print(len(scores)*0.7, " C+등수범위 ",len(scores)*0.7+(len(scores) - (len(scores)*0.7))*0.5)
+print(len(scores)*0.7, " C+등수범위 ",len(scores)*0.85)
 
 
 row_id = 2
 for i in range(len(scores)):
-	if  rankings[i] <= len(scores)*0.3*0.5:	
+	if  rankings[i] <= len(scores)*0.15:	
 		ws.cell(row=row_id, column=8).value = 'A+'
 		
 	elif rankings[i] <= len(scores)*0.3:
 		ws.cell(row=row_id, column=8).value = 'A0'
 		
-	elif rankings[i] <= len(scores)*0.7*0.5:
+	elif rankings[i] <= len(scores)*0.35:
 		ws.cell(row=row_id, column=8).value = 'B+'
 		
 	elif rankings[i] <= len(scores)*0.7:
 		ws.cell(row=row_id, column=8).value = 'B0'
 		
-	elif rankings[i] <= (len(scores)*0.7+(len(scores)-len(scores)*0.7)*0.5):
+	elif rankings[i] <= len(scores)*0.85:
 		ws.cell(row=row_id, column=8).value = 'C+'
-		
-		#print('c+')
+
 	else:
 		ws.cell(row=row_id, column=8).value = 'C0'
 	row_id += 1
-
-
 
 wb.save("student.xlsx")
 
