@@ -29,7 +29,8 @@ try:
 		
 	with open(sys.argv[2], "wt") as f:
 		for region, day, vehicles, trips in zip(base_n, date, act_veh, trips):
-			f.write(str(region) + " " + str(day) + " " + str(vehicles) + " " + str(trips) + "\n")
+			f.write(str(region) + "," + str(day)
+			 + " " + str(vehicles) + "," + str(trips) + "\n")
 		
 		
 			
