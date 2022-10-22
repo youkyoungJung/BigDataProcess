@@ -1,16 +1,15 @@
 #!/usr/bin/python
 import sys
-import datetime
+import calendar
 
 base_n = []
 date = []
 act_veh = []
 trips = []
-t = []
+
 def get_days(yyyy, mm, dd):
-	days = ["MON", "TUE","WED", "THU","FRI","SAT","SUN"]
-	#print(days[datetime.date(yyyy,mm,dd).weekday()])
-	return days[datetime.date(yyyy,mm,dd).weekday()]
+	dayofweek = ["MON", "TUE","WED", "THU","FRI","SAT","SUN"]
+	return dayofweek[calendar.weekday(yyyy,mm,dd)]
 
 try:
 	with open(sys.argv[1], "rt") as f:
