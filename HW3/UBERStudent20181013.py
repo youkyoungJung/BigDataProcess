@@ -32,12 +32,12 @@ try:
 	dictionary = dict(zip(t1,t2))
 	#print(dictionary)
 
-	#for a,b in dictionary.items():
-	#	print(a,b)
+
 	with open(sys.argv[2], "wt") as f:
 		#pass
-		for a,b in dictionary.items():
-			f.write(str(a)+str(b)+'\n')
+		for a, b in dictionary.items():
+			#print('{0}'.format(a))
+			f.write(str(a)[1:-1]+str(b)[1:-1]+'\n')
 			
 		
 		
