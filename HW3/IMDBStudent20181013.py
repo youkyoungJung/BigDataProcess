@@ -10,7 +10,11 @@ try:
 		
 		for line in f:
 			str_arr = line.split("::")
-			genre.append(str_arr[2].strip())
+			str_arr2 = str_arr[2].split("|")
+			
+			for i in str_arr2:
+				genre.append(i.strip())
+			#genre.append(str_arr[2].strip())
 	
 	for i in genre:
 		if i in genres:
