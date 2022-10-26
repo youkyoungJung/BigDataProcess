@@ -9,7 +9,8 @@ trips = []
 
 def get_days(yyyy, mm, dd):
 	dayofweek = ["MON", "TUE","WED", "THU","FRI","SAT","SUN"]
-	return dayofweek[calendar.weekday(yyyy,mm,dd)]
+	a = dayofweek[calendar.weekday(yyyy,mm,dd)]
+	return a
 
 try:
 	with open(sys.argv[1], "rt") as f:
@@ -25,11 +26,19 @@ try:
 		
 		#print(act_veh)
 		#print(date)
-		
+	t1 = zip(base_n,date)
+	t2 = zip(act_veh,trips)
+	
+	dictionary = dict(zip(t1,t2))
+	#print(dictionary)
+
+	#for a,b in dictionary.items():
+	#	print(a,b)
 	with open(sys.argv[2], "wt") as f:
-		for region, day, vehicles, trips in zip(base_n, date, act_veh, trips):
-			f.write(str(region) + "," + str(day)
-			 + " " + str(vehicles) + "," + str(trips) + "\n")
+		#pass
+		for a,b in dictionary.items():
+			f.write(str(a)+str(b)+'\n')
+			
 		
 		
 			
