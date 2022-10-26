@@ -1,7 +1,9 @@
 #!/usr/bin/python
 import sys
 import calendar
+from ast import literal_eval
 
+  
 base_n = []
 date = []
 act_veh = []
@@ -24,23 +26,20 @@ try:
 			act_veh.append(data[2].strip())
 			trips.append(data[3].strip())
 		
-		#print(act_veh)
-		#print(date)
+
 	t1 = zip(base_n,date)
 	t2 = zip(act_veh,trips)
 	
 	dictionary = dict(zip(t1,t2))
+	#literal_eval(dictionary)
 	#print(dictionary)
 
 
 	with open(sys.argv[2], "wt") as f:
-		#pass
 		for a, b in dictionary.items():
-			#for i in a, b:
-				#print(a[i],b[i],end="")
-			#print('{0}'.format(a))
-			c = list(map(int,b))
-			f.write(str(a)[1:-1]+str(c)[1:-1]+'\n')
+			#print(a[0])
+			#print(list(map(int, b)))
+			f.write("{},{} {},{}\n" .format(a[0],a[1],b[0],b[1]))
 			
 		
 		
