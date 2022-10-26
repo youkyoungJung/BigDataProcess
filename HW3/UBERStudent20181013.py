@@ -36,8 +36,11 @@ try:
 	with open(sys.argv[2], "wt") as f:
 		#pass
 		for a, b in dictionary.items():
+			#for i in a, b:
+				#print(a[i],b[i],end="")
 			#print('{0}'.format(a))
-			f.write(str(a)[1:-1]+str(b)[1:-1]+'\n')
+			c = list(map(int,b))
+			f.write(str(a)[1:-1]+str(c)[1:-1]+'\n')
 			
 		
 		
