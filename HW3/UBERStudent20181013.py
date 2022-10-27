@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import sys
 import calendar
-from ast import literal_eval
 
   
 base_n = []
@@ -27,19 +26,46 @@ try:
 			trips.append(data[3].strip())
 		
 
+
 	t1 = zip(base_n,date)
 	t2 = zip(act_veh,trips)
+	t3 = zip(t1,t2)
 	
-	dictionary = dict(zip(t1,t2))
-	#literal_eval(dictionary)
-	#print(dictionary)
+	dictionary = dict()
+	his_dict = dict()
+		
+	for a,b in t3:
+		if a not in dictionary:
+			dictionary[a] = b
+			his_dict[a] = b
+			#print("생성 dict",a,dictionary[a])
+		elif a in dictionary:
+			#*a,b = zip(*t3)
+			dictionary[a] = dictionary[a] + b
+			#print("추가해야할 dict",a,dictionary[a])
+			
+			#dictionary[a] = b
 
 
+		
+		
+		
 	with open(sys.argv[2], "wt") as f:
-		for a, b in dictionary.items():
+		#pass
+		sum_1 = 0
+		sum_2 = 0
+		for a,b in dictionary.items():
+			for i in range(len(a)):
+				if i % 2 == 0:
+					sum_1 += int(b[i])
+				else:
+					sum_2 += int(b[i])
+			print(a, sum_1, sum_2)	
+		
+		#for a, b in dictionary.items():
 			#print(a[0])
 			#print(list(map(int, b)))
-			f.write("{},{} {},{}\n" .format(a[0],a[1],b[0],b[1]))
+			f.write("{},{} {},{}\n" .format(a[0],a[1],sum_1,sum_2))
 			
 		
 		
