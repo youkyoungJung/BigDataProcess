@@ -60,12 +60,15 @@ try:
 					sum_1 += int(b[i])
 				else:
 					sum_2 += int(b[i])
+			
 			print(a, sum_1, sum_2)	
 		
 		#for a, b in dictionary.items():
 			#print(a[0])
 			#print(list(map(int, b)))
 			f.write("{},{} {},{}\n" .format(a[0],a[1],sum_1,sum_2))
+			sum_1 = 0
+			sum_2 = 0
 			
 		
 		
