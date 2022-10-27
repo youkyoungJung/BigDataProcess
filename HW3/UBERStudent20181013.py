@@ -55,7 +55,7 @@ try:
 		sum_1 = 0
 		sum_2 = 0
 		for a,b in dictionary.items():
-			for i in range(len(a)):
+			for i in range(len(b)):
 				if i % 2 == 0:
 					sum_1 += int(b[i])
 				else:
