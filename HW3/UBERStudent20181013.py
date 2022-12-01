@@ -32,17 +32,17 @@ try:
 	t3 = zip(t1,t2)
 	
 	dictionary = dict()
-	his_dict = dict()
+	
 		
 	for a,b in t3:
 		if a not in dictionary:
 			dictionary[a] = b
-			his_dict[a] = b
+		
 			#print("생성 dict",a,dictionary[a])
 		elif a in dictionary:
 			#*a,b = zip(*t3)
 			dictionary[a] = dictionary[a] + b
-			#print("추가해야할 dict",a,dictionary[a])
+			print("추가해야할 dict",a,dictionary[a])
 			
 			#dictionary[a] = b
 
