@@ -1,11 +1,6 @@
 import numpy as np
 import operator
 
-def createDataSet():
-    group = np.array([[1.0, 1.1], [1.0, 1.0], [0, 0], [0, 0.1]])
-    labels = ['A', 'A', 'B', 'B']
-    return group, labels
-
 def autoNorm(dataSet):
     minVals = dataSet.min(0)
     maxVals = dataSet.max(0)
@@ -34,9 +29,3 @@ def classify0(inX, dataSet, labels, k):
             key = operator.itemgetter(1), reverse = True)
     return sortedClassCount[0][0]
 
-if __name__ == "__main__":
-    group, labels = createDataSet()
-    print("group\n", group)
-    print("labels = ", labels)
-
-    print(classify0([0, 0], group, labels, 3))
