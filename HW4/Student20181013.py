@@ -47,18 +47,29 @@ train_labels, train_file_names, train_numberOfFiles = DirectoryToFileName(train_
 #test File data, name, numberOfFile
 test_labels, test_file_names, test_numberOfFiles = DirectoryToFileName(test_folder)
 
+#print(train_file_names)
 #data_Matrix
 trainingMat = np.zeros((train_numberOfFiles, 1024))
 testingMat = np.zeros((test_numberOfFiles, 1024))
 
 #file read(contact data)	
-for i in range(train_numberOfFiles):
-	with open('./'+train_folder+'/'+train_file_names[i], 'r') as f:
-		trainingMat[i, :] = fileToVector('./'+train_folder+'/%s'%train_file_names[i])
+for i in range(test_numberOfFiles):
+	#with open('./'+train_folder+'/'+train_file_names[i], 'r') as f:
+	trainingMat[i, :] = fileToVector('./'+train_folder+'/%s'%train_file_names[i])
+	testingMat[i, :] = fileToVector('./'+test_folder+'/%s'%test_file_names[i])
+		#print(train_file_names[i])	
+#값 확인
+#test_Data = fileToVector('./'+test_folder+'/%s'%input("Input test file name: "))
+#print(train_labels)
+
+#result 전체	
+result = []
+for i in range(test_numberOfFiles):	
+	classifyResult = kNN.classify0(testingMat[i, :], trainingMat, train_labels, 3)
+	result.append(classifyResult)
+	print("classify Result: %d " %classifyResult)
 	
-test_Data = fileToVector('./'+test_folder+'/%s'%test_file_names[3])
-		
-print(kNN.classify0(test_Data, trainingMat, train_labels, 3))
+print("result count: ", len(result))
 		
 
 
