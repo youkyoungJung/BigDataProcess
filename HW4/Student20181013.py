@@ -1,9 +1,23 @@
-import kNN
 import numpy as np
 import sys
 from os import listdir
 import operator
 
+def classify0(inX, dataSet, labels, k):
+    dataSetSize = dataSet.shape[0]
+    diffMat = np.tile(inX, (dataSetSize, 1)) - dataSet
+    sqDiffMat = diffMat ** 2
+    sqDistances = sqDiffMat.sum(axis = 1)
+    distances = sqDistances ** 0.5
+    sortedDistIndicies = distances.argsort()
+    classCount = {}
+    for i in range(k):
+        voteIlabel = labels[sortedDistIndicies[i]]
+        classCount[voteIlabel] = classCount.get(voteIlabel, 0) + 1
+    sortedClassCount = sorted(classCount.items(),
+            key = operator.itemgetter(1), reverse = True)
+    return sortedClassCount[0][0]
+    
 #디렉터리에서 파일이름으로 접근
 def DirectoryToFileName(foldername):
 	labels = []
@@ -66,7 +80,7 @@ for i in range(test_numberOfFiles):
 result = []
 for i in range(1,21):
 	for j in range(test_numberOfFiles):	
-		classifyResult = kNN.classify0(testingMat[j, :], trainingMat, train_labels, i)
+		classifyResult = classify0(testingMat[j, :], trainingMat, train_labels, i)
 	result.append(classifyResult)
 	#print("classify Result: %d " %classifyResult)
 	
