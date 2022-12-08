@@ -76,21 +76,25 @@ for i in range(test_numberOfFiles):
 #test_Data = fileToVector('./'+test_folder+'/%s'%input("Input test file name: "))
 #print(train_labels)
 
-#result 전체	
+#result k에따라	
 result = []
 for i in range(1,21):
-	for j in range(test_numberOfFiles):	
-		classifyResult = classify0(testingMat[j, :], trainingMat, train_labels, i)
+	classifyResult = []
+	for j in range(test_numberOfFiles):			
+		classifyResult.append(classify0(testingMat[j, :], trainingMat, train_labels, i))
+	#print(i, classifyResult)
 	result.append(classifyResult)
 	#print("classify Result: %d " %classifyResult)
-	
+#print(result)	
+
+
 #에러율계산
 count = [0]*20
-for i in range(len(result)):
-	if result[i] == test_labels[i]:
-		continue
-	else:
-		count[i] += 1
+for i in range(20):
+	for j in range(test_numberOfFiles):
+		if result[i][j] != test_labels[j]:
+			count[i] += 1
+#print(count)
 
 error_rate = [0]*20
 for i in range(len(result)):		
