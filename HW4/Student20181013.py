@@ -53,24 +53,39 @@ trainingMat = np.zeros((train_numberOfFiles, 1024))
 testingMat = np.zeros((test_numberOfFiles, 1024))
 
 #file read(contact data)	
-for i in range(test_numberOfFiles):
-	#with open('./'+train_folder+'/'+train_file_names[i], 'r') as f:
+for i in range(train_numberOfFiles):
 	trainingMat[i, :] = fileToVector('./'+train_folder+'/%s'%train_file_names[i])
+for i in range(test_numberOfFiles):
 	testingMat[i, :] = fileToVector('./'+test_folder+'/%s'%test_file_names[i])
-		#print(train_file_names[i])	
+	
 #값 확인
 #test_Data = fileToVector('./'+test_folder+'/%s'%input("Input test file name: "))
 #print(train_labels)
 
 #result 전체	
 result = []
-for i in range(test_numberOfFiles):	
-	classifyResult = kNN.classify0(testingMat[i, :], trainingMat, train_labels, 3)
+for i in range(1,21):
+	for j in range(test_numberOfFiles):	
+		classifyResult = kNN.classify0(testingMat[j, :], trainingMat, train_labels, i)
 	result.append(classifyResult)
-	print("classify Result: %d " %classifyResult)
+	#print("classify Result: %d " %classifyResult)
 	
-print("result count: ", len(result))
-		
+#에러율계산
+count = [0]*20
+for i in range(len(result)):
+	if result[i] == test_labels[i]:
+		continue
+	else:
+		count[i] += 1
+
+error_rate = [0]*20
+for i in range(len(result)):		
+	error_rate[i] = count[i] / len(result) * 100
+	print("%.f"%error_rate[i])
+
+#print("test_labels: ", test_labels)	
+#print("result count: ", len(result))
+#print("test_file_name:", test_file_names)
 
 
 
