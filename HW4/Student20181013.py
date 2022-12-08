@@ -97,8 +97,8 @@ for i in range(20):
 #print(count)
 
 error_rate = [0]*20
-for i in range(len(result)):		
-	error_rate[i] = count[i] / len(result) * 100
+for i in range(20):		
+	error_rate[i] = count[i] / test_numberOfFiles * 100
 	print("%.f"%error_rate[i])
 
 #print("test_labels: ", test_labels)	
